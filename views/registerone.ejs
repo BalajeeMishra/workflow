@@ -1,0 +1,44 @@
+<%- include("./layouts/header"); -%>
+<div>
+    <h1 class="header  text-center">Add more information</h1>
+   
+</div>
+
+  <div class="card" style="width: 35%; margin: auto">
+    <div class="card-body">
+      <form method="post" action="/registered" enctype="multipart/form-data">
+        <div class="mb-3">
+          <label for="" class="form-label"
+            >Age</label
+          >
+          <input
+            type="text"
+            name="age"
+            class="form-control"
+            
+            placeholder="age"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="compny" class="form-label"
+            >Company</label
+          >
+          <input
+            type="text"
+            name="compny"
+            class="form-control"
+            placeholder="company-name"
+          />
+        </div>
+
+
+        <div class="mb-3">
+            <label for="logo">Profile pic</label>
+            <input type="file" class="form-control" name="logo" id="img">
+        </div>
+
+        <button type="submit" class="btn btn-primary button-style">join us</button>
+      </form>
+    </div>
+  </div>
+<%- include("./layouts/footer"); -%>

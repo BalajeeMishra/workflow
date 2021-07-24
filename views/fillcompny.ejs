@@ -1,0 +1,29 @@
+
+<%- include("./layouts/header"); -%>
+<form method="post" action="/compny/added" enctype="multipart/form-data">
+    <div class=" form-input">
+    <div class="mb-3">
+      <label for="name" class="form-label">Company Name</label>
+      <input type="text" name="name" class="form-control"  placeholder="company-name">
+    </div>
+    <div class="mb-3">
+      <label for="location" class="form-label">Location</label>
+      <input type="text" name="location" class="form-control"  placeholder="Location">
+    </div>
+    <div class="mb-3">
+        <label for="category" class="form-label">category</label>
+        <input type="text" name="category" class="form-control" placeholder="Category">
+    </div>
+    <div class="mb-3">
+        <label for="Description">About</label>
+        <textarea name="about" class="form-control" cols="30" rows="10" placeholder="about"></textarea>
+    </div>
+    
+    <div class="mb-3">
+      <label for="logo">logo</label>
+      <input type="file" class="form-control" name="logo" id="img">
+  </div>
+  <button type="submit" class="btn btn-primary">Add information</button>
+  </div>
+  </form>
+  <%- include("./layouts/footer"); -%>
