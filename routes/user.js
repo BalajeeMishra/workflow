@@ -38,9 +38,12 @@ var name;
 
 
 router.get("/",(req,res)=>{
-   res.render("home")
+   res.render("home",{home:req.user})
 });
 
+router.get("/profile",(req,res)=>{
+  res.render("profile",{home:req.user});
+})
 
 router.get("/addmoreinformation",(req,res)=>{
     res.render("registerone");
@@ -104,6 +107,6 @@ router.post('/login', passport.authenticate('local', { failureFlash: true, failu
 router.get("/logout", (req, res) => {
     req.logout();
     req.flash("success", "GoodBye!");
-    res.send("hello world");
+    res.redirect("/");
 });
 module.exports = router;

@@ -1,0 +1,32 @@
+<%- include("./layouts/header"); -%>
+<%- include("./layouts/navbar"); -%>
+
+<% if(success[0]||error[0]){ %>
+  <main class="container mt-3">
+      <%- include("./layouts/flash"); -%>
+  </main>
+  <% } %>
+  <div class="profile-detail">
+    <div class="profile-image">
+      <% if(home.googleId) {%> 
+        <img  src="<%=home.logo%>">
+        <% } else{ %>
+          <img  src="/<%=home.logo%>">
+          <% } %> 
+        </div>
+       <div class="profile-name">
+        <h5 class="text_profile"><%=home.name%></h5>
+        <p class="text_profile">Student at NIT Mizoram</p>
+        <p class="text_profile">Bihar,India</p>
+        <p class="text_profile">Age- <%=home.age%></p>
+        <p class="text_profile">Email: <%=home.username%> </p>
+        <p class="text_profile">Currently working in : <%=home.compny %> </p>
+        </div>
+        <div class="about-section">
+          <div class="about-inner">
+          <h6>About</h6>
+          <p>First of all thank you for visiting here. Currently I am pursuing B-tech from NIT Mizoram. I am someone who loves to write code and solving problems. Helping student at Chegg India.</p>
+        </div>
+        </div>
+     </div>
+  <%- include("./layouts/footer"); -%>

@@ -22,11 +22,13 @@ const compnySchema= new mongoose.Schema({
     about:{
         type:String
     },
-
-    logo: {
+      logo: {
         type: String,
-        // required: [true, "Uploaded file must have a name"],
+        required: [true, "Uploaded file must have a name"],
       },
+      count:{
+          type:Number
+      }
 });
 compnySchema.plugin(passportLocalMongoose);
 const Compny= mongoose.model("Compny", compnySchema);

@@ -1,4 +1,3 @@
-
 <nav class="navbar navbar-expand-lg navbar-light bg-info nav-style">
     <div class="container header-text">
         <a class="navbar-brand" href="/">LoriHealth</a>
@@ -10,31 +9,72 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="nav navbar-nav">
                 <li class="nav-link">
-                    <a class="nav-link active" href="#">users</a>
+                    <a class="nav-link active" href="/compny/listed">Listed Company</a>
                 </li>
                 <li class="nav-link">
-                    <a class="nav-link active" href="#">company</a>
+                    <a class="nav-link active" href="/compny/createcompny">Addcompny</a>
                 </li>
-
-                <li class="nav-item dropdown mt-2">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Dropdown
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="/compny/add">addcompny</a>
-                      <!-- <hr class="dropdown-divider"> -->
-                      <a class="dropdown-item" href="#">More information</a>
-                    </ul>
-                  </li>
+              
             </ul>
             <div class="navbar-nav ms-auto">
                 <% if(!currentUser) {%> 
              <a href="/register" class="nav-link">Register</a>
              <a href="/login" class="nav-link">Login</a>
              <% } else{ %> 
-             <a href="/logout" class="nav-link">Logout</a>
-             <% } %> 
-                                      
+             <div class="nav-logo">
+                <li class="nav-item dropdown">
+    
+                    <% if(home.googleId) {%> 
+                        <img  src="<%=home.logo%>">
+                        <% } else{ %>
+                          <img  src="/<%=home.logo%>">
+                          <% } %> 
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Me
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">                      
+                      <div class="hovrable">
+                        <div class="bothof">
+                        <div class="image">
+                         <% if(home.googleId) {%> 
+                            <img  src="<%=home.logo%>">
+                            <% } else{ %>
+                              <img  src="/<%=home.logo%>">
+                              <% } %> 
+                        </div>
+                        <div class="name">
+                        <h6>Balajee Mishra</h6>
+                        <p style="margin-top:-5px; margin-bottom: 0px; 
+                        font-size:small; font-weight: 500;">Student at NIT Mizoram</p>
+
+                    <div class="googleone mt-2">
+                            <a href="/profile">View Profile</a>
+                    </div>
+                        </div>
+                        </div>
+                        <hr class="dropdown-divider mt-4">
+                        <div class="section">
+                        <h6 class="sec">Account</h6>
+                        <p class="sec">setting & privacy</p>
+                        <p class="sec">help</p>
+                        <p class="sec">Language</p>
+                        </div>
+                        <hr class="dropdown-divider mt-4">
+                        
+                        <div class="section">
+                          <h6 class="sec">Manage</h6>
+                          <p class="sec">Posts & Activity</p>
+                          <p class="sec">Job Posting Account</p>
+                          <hr class="dropdown-divider mt-4">
+                          </div>
+                          <div class="section">
+                         <a href="/logout" class="nav-link sec">Sign Out</a>
+                          </div>
+                    </div>
+                    </ul>
+                  </li>
+             </div>
+             <% } %>                         
             </div>
         </div>
     </div>

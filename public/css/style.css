@@ -101,6 +101,7 @@ input {
   top: 5px;
   font-weight: bold;
   border: none;
+  text-decoration: none;
 }
 .post {
   width: 45%;
@@ -136,4 +137,126 @@ input {
 .post-image img {
   width: 100%;
   height: 50%;
+}
+.home {
+  width: 100%;
+  height: 90vh;
+  background: url(back.jpg) no-repeat center center/cover;
+}
+.text-content {
+  font-weight: bolder;
+  display: flex;
+  justify-content: center;
+  height: 90vh;
+  align-items: center;
+  text-shadow: 2px 2px #fff;
+  color: chocolate;
+  width: 100%;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
+}
+.nav-logo {
+  margin-left: -300px;
+  margin-bottom: -5px;
+}
+.nav-logo img {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.hovrable {
+  width: 275px;
+  height: 450px;
+  background-color: hsl(25, 100%, 97%);
+  margin: auto;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+}
+.section {
+  color: grey;
+  margin-left: 7px;
+}
+.section h6 {
+  color: rgba(0, 0, 0, 0.9);
+}
+.sec:hover {
+  text-decoration: underline;
+}
+.section h6:hover {
+  text-decoration: none;
+}
+.profile-detail {
+  width: 50%;
+  height: 80vh;
+  background-color: rgb(229, 233, 230);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.6);
+  margin: auto;
+  margin-top: 5px;
+  border-radius: 10px;
+}
+.profile-image {
+  position: relative;
+  top: 30px;
+  left: 25px;
+}
+.profile-image img {
+  width: 175px;
+  height: 175px;
+  border-radius: 100%;
+  overflow: hidden;
+}
+.profile-name {
+  position: relative;
+  top: 30px;
+  left: 30px;
+}
+.text_profile {
+  margin-bottom: 0px;
+}
+.about-section {
+  width: 300px;
+  height: 300px;
+  background-color: seashell;
+  float: right;
+  margin-top: -300px;
+  margin-right: 10px;
+  border-radius: 20px;
+  text-align: justify;
+  font-weight: 600;
+}
+.about-inner {
+  margin: 2em 2em;
+}
+
+.googleone {
+  width: 100%;
+  margin-left: 5px;
+  height: 30px;
+  cursor: pointer;
+  border-radius: 20px;
+  text-decoration: none;
+  text-align: center;
+  border: 1px solid blue;
+}
+.googleone a {
+  position: relative;
+  border: none;
+  text-decoration: none;
+}
+
+.about-sectionone {
+  /* width: 300px;
+  height: 300px; */
+  background-color: seashell;
+  float: right;
+  margin-top: -250px;
+  margin-left: 250px;
+  margin-right: 10px;
+  border-radius: 20px;
+  text-align: justify;
+  font-weight: 600;
+}
+.about-innerone {
+  margin: 2em 2em;
 }

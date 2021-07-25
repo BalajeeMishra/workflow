@@ -35,13 +35,22 @@ const upload = multer({
 });
 
 
-
+router.get("/listed",async(req,res)=>{
+    const compny=await Compny.find({});
+    res.render("listedCompany",{compny,home:req.user});
+});
+router.get("/tech/:id",async(req,res)=>{
+    const{id}=req.params;
+    const compny=await Compny.findById(id);
+    console.log(compny);
+    res.render("showcompny",{compny,home:req.user});
+});
 
 router.get("/show",isLoggedIn,async(req,res)=>{
 const compny=  await Compny.find({});
- res.render("index.ejs",{compny});
+ res.render("index.ejs",{compny, home:req.user});
 });
-router.get("/add",isAdmin,isLoggedIn,async(req,res)=>{
+router.get("/createcompny",(req,res)=>{
     res.render("createCompny");
 });
 router.get("/fillup",async(req,res)=>{
@@ -51,7 +60,7 @@ router.post("/added",upload.single("logo"), async(req,res)=>{
      const compny=new Compny(req.body);
      compny.logo= req.file.filename;
      await compny.save();
-     res.redirect("/compny/show");
+     res.redirect("/");
 });
 module.exports=router;
 

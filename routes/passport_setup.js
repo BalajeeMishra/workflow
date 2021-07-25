@@ -9,13 +9,16 @@
      passReqToCallback   : true
    },
    async(request, accessToken, refreshToken, profile, done)=> {
+     console.log(profile);
     const newUser = {
       googleId : profile.id,
       name : profile.displayName,
       firstName : profile.name.givenName,
       lastName: profile.name.familyName,
       logo : profile.photos[0].value,
-      compny:"lori health"
+      compny:"lori health",
+      age:"20",
+      username:profile.email
     }
     try{
       const user= await User.findOne({ googleId: profile.id });

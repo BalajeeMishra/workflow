@@ -1,0 +1,27 @@
+<%- include("./layouts/header"); -%>
+<%- include("./layouts/navbar"); -%>
+
+<% if(success[0]||error[0]){ %>
+  <main class="container mt-3">
+      <%- include("./layouts/flash"); -%>
+  </main>
+  <% } %> 
+  <div class="profile-detail">
+    <div class="profile-image">
+      <img  src="/<%=compny.logo%>">
+        </div>
+       <div class="profile-name">
+        <h5 class="text_profile"><%=compny.name%></h5>
+        <p class="text_profile">Category- <%=compny.category %> </p>
+        <p class="text_profile">Location-<%=compny.location%></p>
+       <a href="/compny/increment" style="text-decoration: none;
+        position: relative; top: 20px; font-weight: bolder;" class="hovering mt-3"> + Follow us </a>
+        </div>
+        <div class="about-sectionone">
+          <div class="about-innerone">
+          <h6>About</h6>
+          <p><%=compny.about %> </p>
+        </div>
+        </div>
+     </div>
+     <%- include("./layouts/footer"); -%>

@@ -1,0 +1,12 @@
+<%- include("./layouts/header"); -%>
+<%- include("./layouts/navbar"); -%>
+
+<% if(success[0]||error[0]){ %>
+  <main class="container mt-3">
+      <%- include("./layouts/flash"); -%>
+  </main>
+  <% } %>
+  <a href="/compny/tech/<%=compny[0]._id%>"> <%=compny[0].name %> </a>
+ 
+
+  <%- include("./layouts/footer"); -%>
