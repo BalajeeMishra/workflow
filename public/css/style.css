@@ -1,20 +1,10 @@
 .header {
-  margin: 25px auto 30px auto;
-  color: chocolate;
-}
-.professional {
-  margin: auto;
-  margin-bottom: 25px;
+  margin: 10px auto 10px auto;
 }
 .text {
   font-size: 0.8em;
   width: 80%;
 }
-/* button {
-      width: 90%;
-      margin-left: 20px;
-      margin-right: 10px;
-    } */
 .sign-in {
   width: 40%;
   margin: 30px auto;

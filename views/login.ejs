@@ -1,5 +1,11 @@
 <%- include("./layouts/header"); -%>
 
+<% if(success[0]||error[0]){ %>
+    <main class="container mt-3">
+        <%- include("./layouts/flash"); -%>
+    </main>
+    <% } %>
+
 <h1 class="text-center">Linkedin</h1>
    <div class="sign-in">
     <div class="sign">
@@ -14,8 +20,8 @@
         <input type="password" class="form-control" name="password" id="password" placeholder="password">
         </div>
 
-        <p class="forgot">Forgot password?</p>
-        <button class="btn btn-primary button-style"
+        <!-- <p class="forgot">Forgot password?</p> -->
+        <button class="btn btn-primary button-style mt-3"
         type="submit">Sign in</button>
         
 
@@ -24,6 +30,6 @@
         
    </div>
 
-   <p class="text-center">New to LinkedIn? Join now</p>
+   <p class="text-center">New to LinkedIn?<a style="text-decoration: none;" href="/register">Join now</a></p>
 
 <%- include("./layouts/footer"); -%>

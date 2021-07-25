@@ -6,23 +6,23 @@ const logoSchema=new mongoose.Schema({
     url:String,
     filename:String
 });
-
 const UserSchema = new mongoose.Schema({
     email: {
         type: String,
     },
-    username:{
+       username:{
         type:String,
-    },
+        unique:false
+     },
     // password:{
     //     type:String,
     // },
-    googleId : {
+ googleId : {
         type : String, 
     } , 
-    name : {
+ name : {
      type : String,
- } ,
+    } ,
  firstName : {
      type : String,
  } ,

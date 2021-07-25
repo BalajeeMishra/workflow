@@ -1,7 +1,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-info nav-style">
     <div class="container header-text">
-        <a class="navbar-brand" href="#">LoriHealth</a>
+        <a class="navbar-brand" href="/">LoriHealth</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -21,17 +21,19 @@
                       Dropdown
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="#">addcompny</a>
-                      <a class="dropdown-item" href="#">adduser</a>
+                      <a class="dropdown-item" href="/compny/add">addcompny</a>
                       <!-- <hr class="dropdown-divider"> -->
                       <a class="dropdown-item" href="#">More information</a>
                     </ul>
                   </li>
             </ul>
             <div class="navbar-nav ms-auto">
-             <a href="#" class="nav-link">Login</a>
-             <a href="#" class="nav-link">Register</a>
-             <a href="#" class="nav-link">Logout</a>
+                <% if(!currentUser) {%> 
+             <a href="/register" class="nav-link">Register</a>
+             <a href="/login" class="nav-link">Login</a>
+             <% } else{ %> 
+             <a href="/logout" class="nav-link">Logout</a>
+             <% } %> 
                                       
             </div>
         </div>

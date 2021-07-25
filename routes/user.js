@@ -4,11 +4,9 @@ const User = require("../models/user");
 const AppError = require("../controlError/AppError");
 const wrapAsync = require("../controlError/wrapasync");
 const passport = require("passport");
-// const { findById } = require("../models/user");
 const multer = require('multer');
 require("./passport_setup");
 // const upload = multer({ dest: "public/files" });
-
 const multerStorage= multer.diskStorage({
        destination:(req,file,cb)=>{
           cb(null,"public"); 
@@ -40,13 +38,9 @@ var name;
 
 
 router.get("/",(req,res)=>{
-   
-   res.send("hello");
-})
-
-router.get("/failed",async(req,res)=>{
-    res.send("hello");
+   res.render("home")
 });
+
 
 router.get("/addmoreinformation",(req,res)=>{
     res.render("registerone");
@@ -71,8 +65,8 @@ router.post("/registered",upload.single("logo"), wrapAsync(async(req, res, next)
         const registeredUser =  await User.register(user, password);
         req.login(registeredUser, err => {
             if (err) return next(err);
-            // req.flash('success', 'Welcome here!');
-            res.send("hello");
+            req.flash('success', 'Welcome here!');
+            res.redirect("/compny/show");
         });
     }
     catch (e) {
@@ -84,15 +78,13 @@ router.post("/registered",upload.single("logo"), wrapAsync(async(req, res, next)
 
 
 router.get("/login", (req, res) => {
-
     res.render("login");
 });
 router.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/users/login' }), (req, res) => {
     req.flash('success', 'welcome back!');
         const redirectUrl = req.session.returnTo || '/';
         delete req.session.returnTo;
-        // res.redirect(redirectUrl);
-        res.send("hello world")
+        res.redirect(redirectUrl);
     })
 
     router.get('/google',
@@ -100,10 +92,13 @@ router.post('/login', passport.authenticate('local', { failureFlash: true, failu
         ['email', 'profile'] }
   ));
    
-  router.get( '/google/callback',
+  router.get('/google/callback',
       passport.authenticate( 'google', {
-          successRedirect: '/',
-          failureRedirect: '/failed'
+          successRedirect: '/compny/show',
+          function(req,res) {
+              req.flash("error","something went wrong");
+              res.redirect("/register");
+          }
   }));
 
 router.get("/logout", (req, res) => {

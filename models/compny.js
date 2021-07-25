@@ -9,15 +9,15 @@ const passportLocalMongoose = require("passport-local-mongoose");
 const compnySchema= new mongoose.Schema({
     name:{
         type:String,
-        required:true
+        // required:true
     },
     location:{
         type:String,
-        required:true
+        // required:true
     },
     category:{
         type:String,
-        required:true
+        // required:true
     },
     about:{
         type:String

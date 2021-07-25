@@ -1,0 +1,10 @@
+<%- include("./layouts/header"); -%>
+<%- include("./layouts/navbar"); -%>
+
+<% if(success[0]||error[0]){ %>
+    <main class="container mt-3">
+        <%- include("./layouts/flash"); -%>
+    </main>
+    <% } %>
+
+<%- include("./layouts/footer"); -%>
