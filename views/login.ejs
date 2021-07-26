@@ -11,21 +11,39 @@
     <p>Stay updated on your professional world</p>
     </div>
     <div class="form">
-        <form method="post" action="/login">
+        <form method="post" action="/login" class="needs-validation" nonvalidate>
         <div class="form-group mb-4">
         <label for="Email" class="form-label">Email</label>
-        <input type="email" class="form-control" name="email" id="email" placeholder="Email or phone">
+        <input type="email" class="form-control" name="email" id="email" placeholder="Email or phone" required>
         </div>
         <div class="form-group mb-4 mt-4">
             <label for="password" class="form-label"
             >password</label>
-        <input type="password" class="form-control" name="password" id="password" placeholder="password">
+        <input type="password" class="form-control" name="password" id="password" placeholder="password" required>
         </div>
         <button class="btn btn-primary button-style mt-3"
         type="submit">Sign in</button>
     </div>
    </div>
 
-   <p class="text-center">New to LinkedIn?<a style="text-decoration: none;" href="/register">Join now</a></p>
+   <p class="text-center" style="font-weight: 600; font-size: 2em; color: rgba(10, 10, 10, 0.733);">New to Lori Health?<a style="text-decoration: none;" href="/register">Join now</a></p>
+
+   <script>
+    (function () {
+        'use strict'
+        const forms = document.querySelectorAll('.needs-validation')
+        Array.from(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+</script>
 
 <%- include("./layouts/footer"); -%>

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;1,500&display=swap");
+
 .header {
   width: 300px;
   margin-left: 300px;
@@ -103,7 +105,8 @@ input {
 }
 .post {
   width: 45%;
-  background: #ededf5;
+  /* background: #ededf5; */
+  background-color: #f8f9fa;
   margin: auto;
   margin-top: 25px;
   box-shadow: 5px 5px 5px 5px rgba(240, 226, 226, 0.8);
@@ -131,6 +134,7 @@ input {
   text-align: justify;
   word-wrap: break-word;
   padding-right: 25px;
+  font-weight: 600;
 }
 .post-image img {
   width: 100%;
@@ -138,9 +142,7 @@ input {
 }
 .home {
   width: 100%;
-  height: 90vh;
-  /* background: url(back.jpg) no-repeat center center/cover; */
-  /* backdrop-filter: blur(20px); */
+  height: 80vh;
   opacity: 0.9;
 }
 .text-content {
@@ -155,7 +157,7 @@ input {
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
 }
 .nav-logo {
-  margin-left: -300px;
+  margin-left: -150px;
   margin-bottom: -5px;
 }
 .nav-logo img {
@@ -164,7 +166,9 @@ input {
   border-radius: 100%;
   overflow: hidden;
 }
-
+.nav-logo .nav-link {
+  display: inline !important;
+}
 .hovrable {
   width: 275px;
   height: 450px;
@@ -175,7 +179,7 @@ input {
 }
 .section {
   color: grey;
-  margin-left: 7px;
+  margin-left: 15px;
 }
 .section h6 {
   color: rgba(0, 0, 0, 0.9);
@@ -189,7 +193,8 @@ input {
 .profile-detail {
   width: 50%;
   height: 80vh;
-  background-color: rgb(229, 233, 230);
+  /* background-color: rgb(229, 233, 230); */
+  background-color: #e6d3f3c9 !important;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.6);
   margin: auto;
   margin-top: 20px;
@@ -218,7 +223,7 @@ input {
 .about-section {
   width: 300px;
   height: 300px;
-  background-color: seashell;
+  background-color: #f8f9fa;
   float: right;
   margin-top: -300px;
   margin-right: 10px;
@@ -263,6 +268,11 @@ input {
   width: 80%;
   margin: 20px auto;
 }
+.form-data {
+  width: 80%;
+  background: lightyellow;
+  margin: auto;
+}
 .form-input {
   position: relative;
   top: 10px;
@@ -287,5 +297,26 @@ input {
 
 .nav-style {
   font-weight: bold;
-  background-color: #d3d6f3 !important;
+  /* background-color: #d3d6f3 !important; */
+  /* background-color: #ddd3f3 !important; */
+  background-color: #e6d3f3 !important;
+}
+body {
+  background: url("/images/background.png") no-repeat center fixed;
+  backdrop-filter: blur(1px);
+  font-family: "Poppins", sans-serif;
+}
+.dropdown-menu {
+  background-color: inherit !important;
+  background-clip: unset !important;
+  border: none !important;
+  border-radius: 0;
+}
+.section a.nav-link {
+  padding-left: 0 !important;
+}
+
+.dropdown-menu[data-bs-popper] {
+  top: 90% !important;
+  left: -150% !important;
 }

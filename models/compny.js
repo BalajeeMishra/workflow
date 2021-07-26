@@ -27,7 +27,8 @@ const compnySchema= new mongoose.Schema({
         required: [true, "Uploaded file must have a name"],
       },
       count:{
-          type:Number
+          type:Number,
+          default:0
       },
       username:{
           type:String,

@@ -9,12 +9,19 @@
 
 
 <div>
-    <h1 class="header  text-center">Register</h1>
+    <h1 class="header  text-center" style="
+    color: #0c52ef;
+    z-index: 1;
+    font-size: 2em;
+    margin-top: 1em;
+    font-style: italic;
+    font-weight: 700;
+    letter-spacing: 2px; ">Register</h1>
 </div>
 
   <div class="card" style="width: 40%; margin: auto;height: 90vh; background-color:lightyellow">
     <div class="card-body">
-      <form method="post" action="/register/user">
+      <form method="post" action="/register/user" class="needs-validation" nonvalidate>
           <div class="mb-3">
             <label for="name" class="form-label"
               >Name</label >
@@ -23,7 +30,8 @@
               name="name"
               class="form-control"
               placeholder="name"
-            />
+              required
+            >
           </div>
 
           <div class="mb-3">
@@ -36,7 +44,8 @@
             class="form-control"
             id="exampleInputEmail1"
             placeholder="email"
-          />
+            required
+          >
         </div>
         <div class="mb-3">
           <label for="password" class="form-label"
@@ -47,7 +56,8 @@
             name="password"
             class="form-control"
             placeholder="password"
-          />
+            required
+          >
         </div>
         <button type="submit" class="btn btn-primary button-style">Submit</button>
       </form>
@@ -60,4 +70,24 @@
       <p class=" text-center mt-4">Already on LinkedIn?<a href="/login" style="text-decoration: none;">Sign in</a></p>
     </div>
   </div>
+
+
+  <script>
+    (function () {
+        'use strict'
+        const forms = document.querySelectorAll('.needs-validation')
+        Array.from(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+</script>
+
 <%- include("./layouts/footer"); -%>

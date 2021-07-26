@@ -43,17 +43,16 @@ router.get("/listed",isLoggedIn,async(req,res)=>{
     const compny=await Compny.find({});
     res.render("listedCompany",{compny,home:req.user});
 });
-router.get("/admin/:id", wrapAsync(async (req, res, next) => {
+router.get("/admin/:id",isLoggedIn,wrapAsync(async (req, res, next) => {
     const { id } = req.params;
     const compny = await Compny.findById(id);
     res.render("edit_admin", { compny,home:req.user });
 }));
 
-router.put("/admin/:id",upload.single("logo"), wrapAsync(async (req, res, next) => {
+router.put("/admin/:id",upload.single("logo"),isLoggedIn, wrapAsync(async (req, res, next) => {
     const { id } = req.params;
     console.log(id);
     const compny = await Compny.findByIdAndUpdate(id, req.body, { runValidators: true, new: true });
-    console.log(compny);
     compny.logo= req.file.filename;
     await compny.save();
     res.redirect("/compny/listed");
@@ -68,7 +67,7 @@ router.get("/employee/:id",async(req,res)=>{
 });
 
 
-router.get("/admindelete/:id", wrapAsync(async (req, res, next) => {
+router.get("/admindelete/:id",isLoggedIn,isAdmin, wrapAsync(async (req, res, next) => {
     const { id } = req.params;
     const deletedProduct = await Compny.findByIdAndDelete(id);
     req.flash("success", "Company Deleted");
@@ -84,10 +83,10 @@ router.get("/show",isLoggedIn,async(req,res)=>{
 const compny=  await Compny.find({});
  res.render("index.ejs",{compny, home:req.user});
 });
-router.get("/createcompny",(req,res)=>{
+router.get("/createcompny",isLoggedIn,async(req,res)=>{
     res.render("createCompny",{home:req.user});
 });
-router.get("/fillup",async(req,res)=>{
+router.get("/fillup",isLoggedIn,async(req,res)=>{
     res.render("fillCompny",{home:req.user});
 });
 router.post("/added",upload.single("logo"), async(req,res)=>{
@@ -97,4 +96,3 @@ router.post("/added",upload.single("logo"), async(req,res)=>{
      res.redirect("/");
 });
 module.exports=router;
-

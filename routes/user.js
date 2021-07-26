@@ -72,7 +72,7 @@ router.post("/registered",upload.single("logo"), wrapAsync(async(req, res, next)
             const redirectUrl = req.session.returnTo || '/';
             delete req.session.returnTo;
             req.flash('success', 'Welcome here!');
-            res.redirect(redirectUrl);
+            res.redirect("/");
         });
     }
     catch (e) {

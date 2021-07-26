@@ -45,7 +45,12 @@ logo: {
  createdAt:{
    type: Date,
    default : Date.now
- }    
+ },
+ admin:{
+     type:Boolean,
+     default:false
+ }
+     
 });
 UserSchema.plugin(passportLocalMongoose);
 //  UserSchema.plugin(findOrCreate);
