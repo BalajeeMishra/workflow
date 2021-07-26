@@ -14,6 +14,10 @@
                 <li class="nav-link">
                     <a class="nav-link active" href="/compny/createcompny">Addcompny</a>
                 </li>
+
+                <li class="nav-link">
+                    <a class="nav-link active" href="/compny/show">Check post</a>
+                </li>
               
             </ul>
             <div class="navbar-nav ms-auto">
@@ -23,7 +27,6 @@
              <% } else{ %> 
              <div class="nav-logo">
                 <li class="nav-item dropdown">
-    
                     <% if(home.googleId) {%> 
                         <img  src="<%=home.logo%>">
                         <% } else{ %>
@@ -36,11 +39,11 @@
                       <div class="hovrable">
                         <div class="bothof">
                         <div class="image">
-                         <% if(home.googleId) {%> 
-                            <img  src="<%=home.logo%>">
-                            <% } else{ %>
-                              <img  src="/<%=home.logo%>">
-                              <% } %> 
+                            <% if(home.googleId) {%> 
+                                <img  src="<%=home.logo%>">
+                                <% } else{ %>
+                                  <img  src="/<%=home.logo%>">
+                                  <% } %> 
                         </div>
                         <div class="name">
                         <h6>Balajee Mishra</h6>

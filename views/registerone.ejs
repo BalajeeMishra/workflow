@@ -1,10 +1,14 @@
 <%- include("./layouts/header"); -%>
+<%- include("./layouts/navbar"); -%>
+<% if(success[0]||error[0]){ %>
+    <main class="container mt-3">
+        <%- include("./layouts/flash"); -%>
+    </main>
+    <% } %>
 <div>
-    <h1 class="header  text-center">Add more information</h1>
-   
+    <h3 class=" text-center mt-3">Add More Information<h3>
 </div>
-
-  <div class="card" style="width: 35%; margin: auto">
+  <div class="card" style="width: 35%; margin: auto; background-color: lightyellow;">
     <div class="card-body">
       <form method="post" action="/registered" enctype="multipart/form-data">
         <div class="mb-3">

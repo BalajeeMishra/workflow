@@ -1,9 +1,18 @@
 <%- include("./layouts/header"); -%>
+<%- include("./layouts/navbar"); -%>
+
+<% if(success[0]||error[0]){ %>
+  <main class="container mt-3">
+      <%- include("./layouts/flash"); -%>
+  </main>
+  <% } %>
+
+
 <div>
-    <h1 class="header  text-center">you have to register first</h1>
+    <h1 class="header  text-center">Register</h1>
 </div>
 
-  <div class="card" style="width: 40%; margin: auto;height: 90vh;">
+  <div class="card" style="width: 40%; margin: auto;height: 90vh; background-color:lightyellow">
     <div class="card-body">
       <form method="post" action="/register/user">
           <div class="mb-3">
@@ -31,7 +40,7 @@
         </div>
         <div class="mb-3">
           <label for="password" class="form-label"
-            >Password (6 or more characters)</label
+            >Password</label
           >
           <input
             type="password"

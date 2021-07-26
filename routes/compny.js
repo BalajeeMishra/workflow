@@ -6,6 +6,7 @@ const wrapAsync = require("../controlError/wrapasync");
 const multer = require('multer');
 const {isLoggedIn}= require("../middleware");
 const {isAdmin}=require("../middleware");
+const User=require("../models/user");
 
 // const { storage } = require("../cloudinary/index");
 // const upload = multer({ storage });
@@ -38,7 +39,7 @@ const upload = multer({
 });
 
 
-router.get("/listed",async(req,res)=>{
+router.get("/listed",isLoggedIn,async(req,res)=>{
     const compny=await Compny.find({});
     res.render("listedCompany",{compny,home:req.user});
 });
@@ -58,6 +59,15 @@ router.put("/admin/:id",upload.single("logo"), wrapAsync(async (req, res, next) 
     res.redirect("/compny/listed");
 }));
 
+router.get("/employee/:id",async(req,res)=>{
+    const {id}=req.params;
+    const compny=await Compny.findById(id);
+    const user =await User.find({});
+    // const compny =await Compny.find({});
+    res.render("employee",{compny,user,home:req.user});
+});
+
+
 router.get("/admindelete/:id", wrapAsync(async (req, res, next) => {
     const { id } = req.params;
     const deletedProduct = await Compny.findByIdAndDelete(id);
@@ -67,7 +77,6 @@ router.get("/admindelete/:id", wrapAsync(async (req, res, next) => {
 router.get("/tech/:id",async(req,res)=>{
     const{id}=req.params;
     const compny=await Compny.findById(id);
-    console.log(compny);
     res.render("showcompny",{compny,home:req.user});
 });
 
@@ -76,10 +85,10 @@ const compny=  await Compny.find({});
  res.render("index.ejs",{compny, home:req.user});
 });
 router.get("/createcompny",(req,res)=>{
-    res.render("createCompny");
+    res.render("createCompny",{home:req.user});
 });
 router.get("/fillup",async(req,res)=>{
-    res.render("fillCompny");
+    res.render("fillCompny",{home:req.user});
 });
 router.post("/added",upload.single("logo"), async(req,res)=>{
      const compny=new Compny(req.body);

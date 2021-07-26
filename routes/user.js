@@ -47,7 +47,7 @@ router.get("/profile",(req,res)=>{
 
 
 router.get("/addmoreinformation",(req,res)=>{
-    res.render("registerone");
+    res.render("registerone",{home:req.user});
 
 });
 
@@ -59,7 +59,7 @@ router.post("/register/user",async(req,res)=>{
     res.redirect("/addmoreinformation");
 });
 router.get("/register", wrapAsync(async (req, res, next) => {
-    res.render("register");
+    res.render("register",{home:req.user});
 }));
 
 router.post("/registered",upload.single("logo"), wrapAsync(async(req, res, next) => {
@@ -69,8 +69,10 @@ router.post("/registered",upload.single("logo"), wrapAsync(async(req, res, next)
         const registeredUser =  await User.register(user, password);
         req.login(registeredUser, err => {
             if (err) return next(err);
+            const redirectUrl = req.session.returnTo || '/';
+            delete req.session.returnTo;
             req.flash('success', 'Welcome here!');
-            res.redirect("/compny/show");
+            res.redirect(redirectUrl);
         });
     }
     catch (e) {
@@ -82,10 +84,10 @@ router.post("/registered",upload.single("logo"), wrapAsync(async(req, res, next)
 
 
 router.get("/login", (req, res) => {
-    res.render("login");
+    res.render("login",{home:req.user});
 });              
 
-router.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/users/login' }), (req, res) => {
+router.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/register' }), (req, res) => {
     req.flash('success', 'welcome back!');
         const redirectUrl = req.session.returnTo || '/';
         delete req.session.returnTo;
@@ -96,10 +98,10 @@ router.post('/login', passport.authenticate('local', { failureFlash: true, failu
     passport.authenticate('google', { scope:
         ['email', 'profile'] }
   ));
-   
+  
   router.get('/google/callback',
       passport.authenticate( 'google', {
-          successRedirect: '/compny/show',
+          successRedirect: '/',
           function(req,res) {
               req.flash("error","something went wrong");
               res.redirect("/register");

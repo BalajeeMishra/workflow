@@ -16,7 +16,7 @@
       firstName : profile.name.givenName,
       lastName: profile.name.familyName,
       logo : profile.photos[0].value,
-      compny:"lori health",
+      compny:"Lori health",
       age:"20",
       username:profile.email
     }
