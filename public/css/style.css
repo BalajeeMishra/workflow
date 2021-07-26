@@ -139,7 +139,9 @@ input {
 .home {
   width: 100%;
   height: 90vh;
-  background: url(back.jpg) no-repeat center center/cover;
+  /* background: url(back.jpg) no-repeat center center/cover; */
+  /* backdrop-filter: blur(20px); */
+  opacity: 0.9;
 }
 .text-content {
   font-weight: bolder;
@@ -281,4 +283,9 @@ input {
   border: 2px solid blue;
   border-radius: 20px;
   padding: 10px;
+}
+
+.nav-style {
+  font-weight: bold;
+  background-color: #d3d6f3 !important;
 }
