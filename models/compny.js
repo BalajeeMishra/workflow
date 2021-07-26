@@ -28,6 +28,10 @@ const compnySchema= new mongoose.Schema({
       },
       count:{
           type:Number
+      },
+      username:{
+          type:String,
+          unique:true
       }
 });
 compnySchema.plugin(passportLocalMongoose);

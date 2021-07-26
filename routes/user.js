@@ -43,7 +43,8 @@ router.get("/",(req,res)=>{
 
 router.get("/profile",(req,res)=>{
   res.render("profile",{home:req.user});
-})
+});
+
 
 router.get("/addmoreinformation",(req,res)=>{
     res.render("registerone");
@@ -82,7 +83,8 @@ router.post("/registered",upload.single("logo"), wrapAsync(async(req, res, next)
 
 router.get("/login", (req, res) => {
     res.render("login");
-});
+});              
+
 router.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/users/login' }), (req, res) => {
     req.flash('success', 'welcome back!');
         const redirectUrl = req.session.returnTo || '/';

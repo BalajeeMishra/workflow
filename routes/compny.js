@@ -1,9 +1,12 @@
 const express=require("express");
 const router=express.Router();
 const Compny= require("../models/compny");
+const AppError = require("../controlError/AppError");
+const wrapAsync = require("../controlError/wrapasync");
 const multer = require('multer');
 const {isLoggedIn}= require("../middleware");
 const {isAdmin}=require("../middleware");
+
 // const { storage } = require("../cloudinary/index");
 // const upload = multer({ storage });
 // const { cloudinary } = require("../cloudinary");
@@ -39,6 +42,28 @@ router.get("/listed",async(req,res)=>{
     const compny=await Compny.find({});
     res.render("listedCompany",{compny,home:req.user});
 });
+router.get("/admin/:id", wrapAsync(async (req, res, next) => {
+    const { id } = req.params;
+    const compny = await Compny.findById(id);
+    res.render("edit_admin", { compny,home:req.user });
+}));
+
+router.put("/admin/:id",upload.single("logo"), wrapAsync(async (req, res, next) => {
+    const { id } = req.params;
+    console.log(id);
+    const compny = await Compny.findByIdAndUpdate(id, req.body, { runValidators: true, new: true });
+    console.log(compny);
+    compny.logo= req.file.filename;
+    await compny.save();
+    res.redirect("/compny/listed");
+}));
+
+router.get("/admindelete/:id", wrapAsync(async (req, res, next) => {
+    const { id } = req.params;
+    const deletedProduct = await Compny.findByIdAndDelete(id);
+    req.flash("success", "Company Deleted");
+    res.redirect("/compny/listed");
+}));
 router.get("/tech/:id",async(req,res)=>{
     const{id}=req.params;
     const compny=await Compny.findById(id);

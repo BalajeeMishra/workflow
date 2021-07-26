@@ -260,3 +260,7 @@ input {
 .about-innerone {
   margin: 2em 2em;
 }
+.table-class {
+  width: 80%;
+  margin: 20px auto;
+}

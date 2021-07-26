@@ -6,7 +6,33 @@
       <%- include("./layouts/flash"); -%>
   </main>
   <% } %>
-  <a href="/compny/tech/<%=compny[0]._id%>"> <%=compny[0].name %> </a>
+  <div class="table-class">
+  <table class="table table-dark table-striped alignmiddle">
+    <thead>
+      <tr>
+        <th>Compny name</th>
+        <th>show detail</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <% compny.forEach(com=>{%>
+    <tbody>
+      <tr>
+        <td><%=com.name %></td> 
+       <td><a class="btn btn-success" href="/compny/tech/<%=compny[0]._id%>">Detail</a></td>
+      <td><a class="btn btn-danger" href="/compny/admin/<%=com._id %>">Edit</a>
+       </td>
+       <td><a class="btn btn-danger" href="/compny/admindelete/<%=com._id %>">Delete</a>
+       </td>
+      </tr>
+    </tbody>
+    <%}) %> 
+  </table>
+  </div>
+  </div>
+  </div>
+  </div>
  
 
   <%- include("./layouts/footer"); -%>

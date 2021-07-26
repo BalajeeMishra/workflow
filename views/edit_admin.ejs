@@ -1,0 +1,36 @@
+<%- include("./layouts/header"); -%>
+<%- include("./layouts/navbar"); -%>
+
+<% if(success[0]||error[0]){ %>
+  <main class="container mt-3">
+      <%- include("./layouts/flash"); -%>
+  </main>
+  <% } %>
+<form method="post" action="/compny/admin/<%=compny._id %>?_method=PUT"  enctype="multipart/form-data">
+    <div class=" form-input">
+    <div class="mb-3">
+      <label for="name" class="form-label">Company Name</label>
+      <input type="text" name="name" class="form-control" value="<%=compny.name%>"  placeholder="company-name">
+    </div>
+    <div class="mb-3">
+      <label for="location" class="form-label">Location</label>
+      <input type="text" name="location" class="form-control" value="<%=compny.location %>"  placeholder="Location">
+    </div>
+    <div class="mb-3">
+        <label for="category" class="form-label">category</label>
+        <input type="text" name="category" class="form-control" value="<%=compny.category%>" placeholder="Category">
+    </div>
+    <div class="mb-3">
+        <label for="Description">About</label>
+        <textarea name="about" class="form-control" value="<%=compny.about%>" cols="30" rows="10" placeholder="about"></textarea>
+    </div>
+    
+    <div class="mb-3">
+      <label for="logo">logo</label>
+      <input type="file" class="form-control" name="logo" id="img">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+  </form>
+
+<%- include("./layouts/header"); -%>
