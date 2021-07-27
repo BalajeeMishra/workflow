@@ -286,9 +286,9 @@ input {
   box-shadow: 5px 5px 5px 5px rgba(240, 226, 226, 0.8);
   background-color: lightyellow;
 }
-/* .abc {
+.abc {
   width: 250px;
-} */
+}
 .hovering {
   border: 2px solid blue;
   border-radius: 20px;
@@ -297,13 +297,11 @@ input {
 
 .nav-style {
   font-weight: bold;
-  /* background-color: #d3d6f3 !important; */
-  /* background-color: #ddd3f3 !important; */
   background-color: #e6d3f3 !important;
 }
 body {
   background: url("/images/background.png") no-repeat center fixed;
-  backdrop-filter: blur(1px);
+  /* backdrop-filter: blur(1px); */
   font-family: "Poppins", sans-serif;
 }
 .dropdown-menu {

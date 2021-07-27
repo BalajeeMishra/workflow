@@ -39,24 +39,22 @@ require("dotenv").config();
   
   app.use(express.urlencoded({ extended: true }));
   app.use(methodOverride("_method"));
- // app.use(express.static(path.join(__dirname, "public")));
-  // app.use(express.static("public"));
   
-  // const store = new MongoDBStore({
-  //   mongoUrl: "mongodb://localhost:27017/workflow",
-  //   secret: "thisshouldbeabettersecret!",
-  //   touchAfter: 60
-  // });
+  const store = new MongoDBStore({
+    mongoUrl: "mongodb://localhost:27017/workflow",
+    secret: "thisshouldbeabettersecret!",
+    touchAfter: 60
+  });
   
-  // store.on("error", function (e) {
-  //   console.log("SESSION STORE ERROR", e);
-  // });
+  store.on("error", function (e) {
+    console.log("SESSION STORE ERROR", e);
+  });
   
   const sessionConfig = {
-    // store,
+   store,
     secret: "thisshouldbeabettersecret!",
     resave: false,
-    saveUninitialized: true, //because of true here we are able to see cookies with every request.
+    saveUninitialized: true,
     cookie: {
       httpOnly: true,
       expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
@@ -68,14 +66,10 @@ require("dotenv").config();
   
   app.use(passport.initialize());
   app.use(passport.session());
-  //passport.use(new LocalStrategy(User.authenticate()));
   passport.use(new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password'
 }, User.authenticate()));
-  // passport.serializeUser(User.serializeUser());
-  // passport.deserializeUser(User.deserializeUser());
-
   passport.serializeUser(function(user, done) {
     done(null, user);
   });
@@ -91,8 +85,6 @@ require("dotenv").config();
     res.locals.currentUser = req.user;
     res.locals.success = req.flash("success");
     res.locals.error = req.flash("error");
-    // res.locals.email= req.user.email;
-    // res.locals.password= req.user.password;
     
     next();
   });
@@ -107,27 +99,17 @@ require("dotenv").config();
   };
   
   app.use((err, req, res, next) => {
-    //We can single out particular types of Mongoose Errors:
     if (err.name === "ValidationError") err = handleValidationErr(err);
     next(err);
   });
   
-  // app.use((err, req, res, next) => {
-  //   const { statusCode = 500, message = "Something went wrong" } = err;
-  //   console.log(err);
-  //   if (err) {
-  //     res.status(statusCode).render("error", { err });
-  //   }
-  // });
-  
-  // app.get('*', (req, res, next) => {
-  //     res.locals.cart = req.session.cart;
-  //     console.log(res.locals.cart)
-  //     console.log(req.session.cart)
-  //     // res.locals.user = req.user || null;
-  //     next();
-  // });
-  
+  app.use((err, req, res, next) => {
+    const { statusCode = 500, message = "Something went wrong" } = err;
+    console.log(err);
+    if (err) {
+      res.status(statusCode).render("error", { err,home:req.user});
+    }
+  });
   const PORT = process.env.PORT || 3000;
   
   app.listen(PORT, () => {

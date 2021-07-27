@@ -58,13 +58,13 @@ router.put("/admin/:id",upload.single("logo"),isLoggedIn, wrapAsync(async (req, 
     res.redirect("/compny/listed");
 }));
 
-router.get("/employee/:id",async(req,res)=>{
+router.get("/employee/:id",wrapAsync(async(req,res)=>{
     const {id}=req.params;
     const compny=await Compny.findById(id);
     const user =await User.find({});
     // const compny =await Compny.find({});
     res.render("employee",{compny,user,home:req.user});
-});
+}));
 
 
 router.get("/admindelete/:id",isLoggedIn,isAdmin, wrapAsync(async (req, res, next) => {
@@ -73,26 +73,26 @@ router.get("/admindelete/:id",isLoggedIn,isAdmin, wrapAsync(async (req, res, nex
     req.flash("success", "Company Deleted");
     res.redirect("/compny/listed");
 }));
-router.get("/tech/:id",async(req,res)=>{
+router.get("/tech/:id",isLoggedIn,wrapAsync(async(req,res)=>{
     const{id}=req.params;
     const compny=await Compny.findById(id);
     res.render("showcompny",{compny,home:req.user});
-});
+}));
 
-router.get("/show",isLoggedIn,async(req,res)=>{
+router.get("/show",isLoggedIn,wrapAsync(async(req,res)=>{
 const compny=  await Compny.find({});
  res.render("index.ejs",{compny, home:req.user});
-});
-router.get("/createcompny",isLoggedIn,async(req,res)=>{
+}));
+router.get("/createcompny",isLoggedIn,wrapAsync(async(req,res)=>{
     res.render("createCompny",{home:req.user});
-});
-router.get("/fillup",isLoggedIn,async(req,res)=>{
+}));
+router.get("/fillup",isLoggedIn,wrapAsync(async(req,res)=>{
     res.render("fillCompny",{home:req.user});
-});
-router.post("/added",upload.single("logo"), async(req,res)=>{
+}));
+router.post("/added",upload.single("logo"), wrapAsync(async(req,res)=>{
      const compny=new Compny(req.body);
      compny.logo= req.file.filename;
      await compny.save();
      res.redirect("/");
-});
+}));
 module.exports=router;
