@@ -18,7 +18,7 @@ require("dotenv").config();
   const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/workflow";
   
   mongoose
-    .connect("mongodb://localhost:27017/workflow", {
+    .connect(dbUrl, {
       useNewUrlParser: true,
       useCreateIndex: true,
       useUnifiedTopology: true,
@@ -41,7 +41,7 @@ require("dotenv").config();
   app.use(methodOverride("_method"));
   
   const store = new MongoDBStore({
-    mongoUrl: "mongodb://localhost:27017/workflow",
+    mongoUrl: dbUrl,
     secret: "thisshouldbeabettersecret!",
     touchAfter: 60
   });
